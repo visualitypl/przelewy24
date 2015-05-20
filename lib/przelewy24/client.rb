@@ -1,16 +1,20 @@
 require 'net/http'
 require 'digest'
-require 'cgi'
 
 module Przelewy24
   class Client
     attr_reader :merchant_id, :pos_id, :crc, :gateway_url
 
-    def initialize(merchant_id, pos_id, crc)
+    def initialize(merchant_id, pos_id, crc, mode = :sandbox)
       @merchant_id = merchant_id
       @pos_id = pos_id
       @crc = crc
-      @gateway_url = 'sandbox.przelewy24.pl'
+
+      if mode == :production
+        @gateway_url = 'secure.przelewy24.pl'
+      else
+        @gateway_url = 'sandbox.przelewy24.pl'
+      end
     end
 
     def test_connection
