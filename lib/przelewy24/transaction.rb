@@ -1,6 +1,7 @@
 module Przelewy24
   class Transaction
-    attr_reader :session_id, :merchant_id, :amount, :crc, :description, :email, :signature
+    attr_reader :session_id, :merchant_id, :amount, :crc, :description, :email, :signature,
+      :url_return, :url_status, :wait_for_result, :currency, :country, :encoding
 
     def initialize(data = {})
       @data ||= {}
@@ -11,6 +12,13 @@ module Przelewy24
       @amount = data[:amount]
       @description = data[:description]
       @email = data[:email]
+      @url_return = data[:url_return]
+      @url_status = data[:url_status]
+      @wait_for_result = data[:wait_for_result]
+      @currency = data[:currency]
+      @country = data[:country]
+      @encoding = data[:encoding]
+
       @signature = calculate_signature
     end
 
@@ -20,15 +28,15 @@ module Przelewy24
         p24_pos_id: merchant_id,
         p24_session_id: session_id,
         p24_amount: amount,
-        p24_currency: 'PLN',
+        p24_currency: currency,
         p24_description: description,
         p24_email: email,
-        p24_country: 'PL',
-        p24_url_return: 'http://54e3607b.ngrok.com/report',
-        p24_url_status: 'http://54e3607b.ngrok.com/report',
-        p24_wait_for_result: '1',
+        p24_country: country,
+        p24_url_return: url_return,
+        p24_url_status: url_status,
+        p24_wait_for_result: wait_for_result,
         p24_sign: signature,
-        p24_encoding: 'UTF-8',
+        p24_encoding: encoding,
         p24_api_version: '3.2'
       }
     end
@@ -40,7 +48,7 @@ module Przelewy24
         session_id,
         merchant_id,
         amount,
-        'PLN',
+        currency,
         crc
       ].join('|'))
     end
