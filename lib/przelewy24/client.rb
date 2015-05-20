@@ -12,8 +12,12 @@ module Przelewy24
 
       if mode == :production
         @gateway_url = 'secure.przelewy24.pl'
-      else
+      elsif mode == :sandbox
         @gateway_url = 'sandbox.przelewy24.pl'
+      elsif mode == :sandbox2
+        @gateway_url = 'sandbox2.przelewy24.pl'
+      else
+        raise InvalidGatewayUrl
       end
     end
 
