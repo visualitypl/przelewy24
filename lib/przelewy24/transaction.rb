@@ -3,7 +3,7 @@ module Przelewy24
     attr_reader :session_id, :merchant_id, :amount, :crc, :description, :email, :signature,
       :url_return, :url_status, :wait_for_result, :currency, :country, :encoding,
       :client_name, :client_address, :client_zip, :client_city, :client_phone, :language,
-      :method, :time_limit, :channel,
+      :method, :time_limit, :channel
 
     def initialize(data = {})
       @data ||= {}
