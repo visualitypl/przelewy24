@@ -9,10 +9,12 @@ module Przelewy24
       end
 
       def register_transfer(transaction)
-        client.call(:register_transfer, message: {
+        response = client.call(:register_transfer, message: {
           'authorizeIn' => authorization_object,
           'o_transactionIn' => transaction
         })
+
+        Response.new(response.body[:register_transfer_response][:return])
       end
 
       private
