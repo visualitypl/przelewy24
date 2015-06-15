@@ -14,7 +14,7 @@ module Przelewy24
           'o_transactionIn' => transaction
         })
 
-        Response.new(response.body[:register_transfer_response][:return])
+        Przelewy24::Ekspres::Response.new(response.body[:register_transfer_response][:return])
       end
 
       private
