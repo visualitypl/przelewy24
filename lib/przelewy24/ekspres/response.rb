@@ -13,6 +13,10 @@ module Przelewy24
       def result
         @result
       end
+
+      def error
+        @error
+      end
     end
   end
 end
