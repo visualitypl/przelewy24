@@ -15,6 +15,8 @@ module Przelewy24
         })
 
         Response.new(response.body[:register_transfer_response][:return])
+      rescue Savon::SOAPFault => error
+        raise InvalidAttributes
       end
 
       private
