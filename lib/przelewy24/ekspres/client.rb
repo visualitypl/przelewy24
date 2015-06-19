@@ -14,7 +14,7 @@ module Przelewy24
           'o_transactionIn' => transaction
         })
 
-        Response.new(response.body[:register_transfer_response][:return])
+        SoapResponse.new(response.body[:register_transfer_response][:return])
       rescue Savon::SOAPFault => error
         raise InvalidAttributes
       end

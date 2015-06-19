@@ -30,7 +30,7 @@ module Przelewy24
           orderId: order_id
         })
 
-        Response.new(response.body[:get_transaction_reference_response][:return])
+        SoapResponse.new(response.body[:get_transaction_reference_response][:return])
       end
 
       def charge_card(data = {})
@@ -45,7 +45,7 @@ module Przelewy24
           description: data[:description]
         })
 
-        Response.new(response.body[:charge_card_response][:return])
+        SoapResponse.new(response.body[:charge_card_response][:return])
       end
 
       private

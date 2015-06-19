@@ -33,7 +33,7 @@ module Przelewy24
         http.request(post)
       end
 
-      Response.new(response)
+      HttpResponse.new(response)
     end
 
     def create_transaction(data = {})
@@ -50,7 +50,7 @@ module Przelewy24
         http.request(post)
       end
 
-      Response.new(response)
+      HttpResponse.new(response)
     end
 
     def verify_transaction(data = {})
@@ -71,7 +71,7 @@ module Przelewy24
         http.request(post)
       end
 
-      Response.new(response)
+      HttpResponse.new(response)
     end
   end
 end

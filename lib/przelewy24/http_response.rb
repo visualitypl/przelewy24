@@ -1,5 +1,5 @@
 module Przelewy24
-  class Response
+  class HttpResponse
     attr_reader :attributes
 
     def initialize(http_response)
