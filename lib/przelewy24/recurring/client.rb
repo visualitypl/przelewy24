@@ -37,12 +37,13 @@ module Przelewy24
         response = client.call(:charge_card, message: {
           login: @login,
           pass: @password,
-          refId: data[:ref_id],
+          refid: data[:ref_id],
           amount: data[:amount],
           currency: data[:currency],
           sessionId: data[:session_id],
           client: data[:client],
-          description: data[:description]
+          description: data[:description],
+          email: data[:email]
         })
 
         SoapResponse.new(response.body[:charge_card_response][:return])
